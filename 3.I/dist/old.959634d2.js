@@ -117,7 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"old.js":[function(require,module,exports) {
+})({"classes/User.js":[function(require,module,exports) {
 "use strict";
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -126,25 +126,10 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-var GoogleBot = /*#__PURE__*/function () {
-  function GoogleBot() {
-    _classCallCheck(this, GoogleBot);
-  }
-
-  _createClass(GoogleBot, [{
-    key: "setGoogleToken",
-    value: function setGoogleToken(token) {
-      this._googleToken = token;
-    }
-  }, {
-    key: "checkGoogleLogin",
-    value: function checkGoogleLogin(token) {
-      return token === this._googleToken;
-    }
-  }]);
-
-  return GoogleBot;
-}();
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.User = void 0;
 
 var User = /*#__PURE__*/function () {
   function User() {
@@ -189,8 +174,22 @@ var User = /*#__PURE__*/function () {
   }]);
 
   return User;
-}(); //admin cannot use google or facebook token
+}();
 
+exports.User = User;
+},{}],"classes/Admin.js":[function(require,module,exports) {
+"use strict";
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Admin = void 0; //admin cannot use google or facebook token
 
 var Admin = /*#__PURE__*/function () {
   function Admin() {
@@ -214,15 +213,64 @@ var Admin = /*#__PURE__*/function () {
   return Admin;
 }();
 
+exports.Admin = Admin;
+},{}],"classes/GoogleBot.js":[function(require,module,exports) {
+"use strict";
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.GoogleBot = void 0;
+
+var GoogleBot = /*#__PURE__*/function () {
+  function GoogleBot() {
+    _classCallCheck(this, GoogleBot);
+  }
+
+  _createClass(GoogleBot, [{
+    key: "setGoogleToken",
+    value: function setGoogleToken(token) {
+      this._googleToken = token;
+    }
+  }, {
+    key: "checkGoogleLogin",
+    value: function checkGoogleLogin(token) {
+      return token === this._googleToken;
+    }
+  }]);
+
+  return GoogleBot;
+}();
+
+exports.GoogleBot = GoogleBot;
+},{}],"old.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var User_1 = require("./classes/User");
+
+var Admin_1 = require("./classes/Admin");
+
+var GoogleBot_1 = require("./classes/GoogleBot");
+
 var passwordElement = document.querySelector('#password');
 var typePasswordElement = document.querySelector('#typePassword');
 var typeGoogleElement = document.querySelector('#typeGoogle');
 var typeFacebookElement = document.querySelector('#typeFacebook');
 var loginAsAdminElement = document.querySelector('#loginAsAdmin');
 var resetPasswordElement = document.querySelector('#resetPassword');
-var guest = new User();
-var admin = new Admin();
-var googleBot = new GoogleBot();
+var guest = new User_1.User();
+var admin = new Admin_1.Admin();
+var googleBot = new GoogleBot_1.GoogleBot();
 document.querySelector('#login-form').addEventListener('submit', function (event) {
   event.preventDefault();
   var user = loginAsAdminElement.checked ? admin : guest;
@@ -265,7 +313,7 @@ resetPasswordElement.addEventListener('click', function (event) {
   var user = loginAsAdminElement.checked ? admin : guest;
   user.resetPassword();
 });
-},{}],"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./classes/User":"classes/User.js","./classes/Admin":"classes/Admin.js","./classes/GoogleBot":"classes/GoogleBot.js"}],"../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -293,7 +341,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56494" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58090" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

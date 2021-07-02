@@ -1,59 +1,17 @@
 "use strict";
-class GoogleBot {
-    setGoogleToken(token) {
-        this._googleToken = token;
-    }
-    checkGoogleLogin(token) {
-        return token === this._googleToken;
-    }
-}
-class User {
-    constructor() {
-        this._password = 'user';
-    }
-    //Interesting detail here: while I did not define a return type or param type, any deviation from the interface will give you an error.
-    // Test it out by uncommenting the code below.
-    checkGoogleLogin(token) {
-        // return "this will not work";
-        return token === this._googleToken;
-    }
-    setGoogleToken(token) {
-        this._googleToken = token;
-    }
-    getFacebookLogin(token) {
-        return token === this._facebookToken;
-    }
-    setFacebookToken(token) {
-        this._facebookToken = token;
-    }
-    checkPassword(password) {
-        return password === this._password;
-    }
-    resetPassword() {
-        this._password = prompt('What is your new password?');
-    }
-}
-//admin cannot use google or facebook token
-class Admin {
-    constructor() {
-        this._password = 'admin';
-    }
-    checkPassword(password) {
-        return password === this._password;
-    }
-    resetPassword() {
-        this._password = prompt('What is your new password?');
-    }
-}
+Object.defineProperty(exports, "__esModule", { value: true });
+const User_1 = require("./classes/User");
+const Admin_1 = require("./classes/Admin");
+const GoogleBot_1 = require("./classes/GoogleBot");
 const passwordElement = document.querySelector('#password');
 const typePasswordElement = (document.querySelector('#typePassword'));
 const typeGoogleElement = (document.querySelector('#typeGoogle'));
 const typeFacebookElement = (document.querySelector('#typeFacebook'));
 const loginAsAdminElement = (document.querySelector('#loginAsAdmin'));
 const resetPasswordElement = (document.querySelector('#resetPassword'));
-let guest = new User();
-let admin = new Admin();
-let googleBot = new GoogleBot();
+let guest = new User_1.User();
+let admin = new Admin_1.Admin();
+let googleBot = new GoogleBot_1.GoogleBot();
 document.querySelector('#login-form').addEventListener('submit', (event) => {
     event.preventDefault();
     let user = loginAsAdminElement.checked ? admin : guest;
